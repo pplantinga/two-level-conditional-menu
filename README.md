@@ -9,11 +9,11 @@ Your menu structure looks like:
 
 * Home
 * About
-    * People
-		* History
+	* People
+	* History
 * Contact
-    * Phone
-		* Email
-		* Address
+	* Phone
+	* Email
+	* Address
 
 The sub-menu items would only appear on relevant pages. The 'People', and 'History' menu items would only appear on the 'About', 'People', and 'History' pages.
