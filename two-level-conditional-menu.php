@@ -4,7 +4,7 @@
 Plugin Name: Two Level Conditional Menu
 Plugin URI: http://wordpress.org/extend/plugins/two-level-conditional-menu/
 Description: Replaces two-level menu with a two-level conditional menu.
-Version: 1.0
+Version: 1.1
 Author: Peter Massey-Plantinga
 Author URI: http://massey-plantinga.com
 License: GPL2
@@ -32,8 +32,9 @@ function two_level_nav_menu( $menu ) {
 
 			// First, find parent id, if it exists
 			$parent_id = -1;
+			$current_page_id = is_home() ? get_option( 'page_for_posts' ) : get_the_ID();
 			foreach ( $menu_items as $item ) {
-				if ( $item->object_id == $post->ID ) {
+				if ( $item->object_id == $current_page_id ) {
 					if ( $item->menu_item_parent == 0 ) {
 						$parent_id = $item->ID;
 					} else {
@@ -48,7 +49,7 @@ function two_level_nav_menu( $menu ) {
 
 				// Figure out if we're on the current page
 				$class = '';
-				if ( $item->object_id == $post->ID )
+				if ( $item->object_id == $current_page_id )
 					$class = ' class="current-menu-item"';
 				
 				// add menu item
